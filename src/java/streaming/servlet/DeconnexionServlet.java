@@ -20,28 +20,27 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "Deconnexion", urlPatterns = {"/deconnexion"})
 public class DeconnexionServlet extends HttpServlet {
-
-   
+    
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Cookie c;
+//        Cookie c;
+//
+//        c = new Cookie("login", null);
+//        c.setMaxAge(0);
+//        resp.addCookie(c);
+//
+//        c = new Cookie("mdp", null);
+//        c.setMaxAge(0);
+//        resp.addCookie(c);
+//
+//        c = new Cookie("util_type", null);
+//        c.setMaxAge(0);
+//        resp.addCookie(c);
 
-        c = new Cookie("login", null);
-        c.setMaxAge(0);
-        resp.addCookie(c);
-
-        c = new Cookie("mdp", null);
-        c.setMaxAge(0);
-        resp.addCookie(c);
-
-        c = new Cookie("util_type", null);
-        c.setMaxAge(0);
-        resp.addCookie(c);
+        req.getSession().removeAttribute("utilConnecte");
         
-         resp.sendRedirect("films_liste");
+        resp.sendRedirect("films_liste");
         
     }
     
-    
-
 }

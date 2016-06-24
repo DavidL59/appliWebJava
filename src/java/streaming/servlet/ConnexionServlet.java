@@ -32,10 +32,13 @@ public class ConnexionServlet extends HttpServlet {
        UtilisateurService utilService = new UtilisateurService();
        Utilisateur util = utilService.rechercheParLoginEtMdp(login, mdp);
        
-       resp.addCookie(new Cookie("login", login));
-       resp.addCookie(new Cookie("mdp", mdp));
-       resp.addCookie(new Cookie("util_type", util.getUtiltype().toString()));
-       //redirige vers la liste des films une fois authentifier 
+       // je suis loggé correctement 
+       req.getSession().setAttribute("utilConnecte", util);
+       
+//       resp.addCookie(new Cookie("login", login));
+//       resp.addCookie(new Cookie("mdp", mdp));
+//       resp.addCookie(new Cookie("util_type", util.getUtiltype().toString()));
+//       //redirige vers la liste des films une fois authentifier 
        resp.sendRedirect("films_liste?connecte=vrai");
     }
 

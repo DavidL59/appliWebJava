@@ -13,18 +13,19 @@
 
 
 <c:choose>
-    <c:when test="${cookie.login==null}">
+    <c:when test="${utilConnecte.identifiant==null}">
         <a href="pageDeConnexion">connection</a>
         <a href="inscription">Inscription</a>
     </c:when>
         
     <c:otherwise>
         <a href="deconnexion">Deconnection</a>
-        <c:if test="${cookie.util_type.getValue()=='ADMIN'}">
+        <c:if test="${utilConnecte.utiltype=='ADMIN'}">
                 <a href="ajout_film">ajout d'un film</a>
                 <a href="ajout_serie">ajout d'une serie</a>
-                <a href="ajout_serie">changer style1</a>
-                <a href="ajout_serie">changer style2</a>
         </c:if>      
-    </c:otherwise>
+    </c:otherwise>        
 </c:choose>
+                
+                <a href="change_style?style=style1">changer style1</a>
+                <a href="change_style?style=style2">changer style2</a>
